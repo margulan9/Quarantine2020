@@ -13,6 +13,7 @@
 		2BDF4C002427894D00347131 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF4BFE2427894D00347131 /* Main.storyboard */; };
 		2BDF4C022427894F00347131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF4C012427894F00347131 /* Assets.xcassets */; };
 		2BDF4C052427894F00347131 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF4C032427894F00347131 /* LaunchScreen.storyboard */; };
+		2BDF4C0D2427D09E00347131 /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4C0C2427D09E00347131 /* SwipingController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2BDF4C012427894F00347131 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BDF4C042427894F00347131 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2BDF4C062427894F00347131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BDF4C0C2427D09E00347131 /* SwipingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				2BDF4C012427894F00347131 /* Assets.xcassets */,
 				2BDF4C032427894F00347131 /* LaunchScreen.storyboard */,
 				2BDF4C062427894F00347131 /* Info.plist */,
+				2BDF4C0C2427D09E00347131 /* SwipingController.swift */,
 			);
 			path = "AutoLayout-day3";
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				2BDF4BFD2427894D00347131 /* ViewController.swift in Sources */,
 				2BDF4BF92427894D00347131 /* AppDelegate.swift in Sources */,
 				2BDF4BFB2427894D00347131 /* SceneDelegate.swift in Sources */,
+				2BDF4C0D2427D09E00347131 /* SwipingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
