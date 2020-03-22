@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  ProgrammaticallyUI-day1
+//  AutoLayout-day3
 //
-//  Created by Sugirbay Margulan on 3/20/20.
+//  Created by Sugirbay Margulan on 3/22/20.
 //  Copyright © 2020 Sugirbay Margulan. All rights reserved.
 //
 
