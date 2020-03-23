@@ -61,6 +61,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("I have not to appear")
         view.addSubview(descriptionTextView)
 
         setupButtonControls()

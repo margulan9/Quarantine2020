@@ -14,6 +14,8 @@
 		2BDF4C022427894F00347131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF4C012427894F00347131 /* Assets.xcassets */; };
 		2BDF4C052427894F00347131 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF4C032427894F00347131 /* LaunchScreen.storyboard */; };
 		2BDF4C0D2427D09E00347131 /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4C0C2427D09E00347131 /* SwipingController.swift */; };
+		2BDF4C0F2428A28700347131 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4C0E2428A28700347131 /* PageCell.swift */; };
+		2BDF4C112428B16100347131 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF4C102428B16100347131 /* Page.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		2BDF4C042427894F00347131 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2BDF4C062427894F00347131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BDF4C0C2427D09E00347131 /* SwipingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
+		2BDF4C0E2428A28700347131 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		2BDF4C102428B16100347131 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				2BDF4C032427894F00347131 /* LaunchScreen.storyboard */,
 				2BDF4C062427894F00347131 /* Info.plist */,
 				2BDF4C0C2427D09E00347131 /* SwipingController.swift */,
+				2BDF4C0E2428A28700347131 /* PageCell.swift */,
+				2BDF4C102428B16100347131 /* Page.swift */,
 			);
 			path = "AutoLayout-day3";
 			sourceTree = "<group>";
@@ -142,6 +148,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BDF4BFD2427894D00347131 /* ViewController.swift in Sources */,
+				2BDF4C0F2428A28700347131 /* PageCell.swift in Sources */,
+				2BDF4C112428B16100347131 /* Page.swift in Sources */,
 				2BDF4BF92427894D00347131 /* AppDelegate.swift in Sources */,
 				2BDF4BFB2427894D00347131 /* SceneDelegate.swift in Sources */,
 				2BDF4C0D2427D09E00347131 /* SwipingController.swift in Sources */,
