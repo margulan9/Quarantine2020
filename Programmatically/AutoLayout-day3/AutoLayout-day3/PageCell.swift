@@ -43,6 +43,7 @@ class PageCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
+        print("works")
     }
     required init?(coder: NSCoder) {
         fatalError("init() has not been implemented")

@@ -39,11 +39,11 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
     }()
     
     @objc private func handlePrev() {
-              let nextIndex = max(pageControl.currentPage - 1, 0)
-              let indexPath = IndexPath(item: nextIndex, section: 0)
-              pageControl.currentPage = nextIndex
-              collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-          }
+        let nextIndex = max(pageControl.currentPage - 1, 0)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
     
     private let nextButton: UIButton = {
         let button = UIButton(type: .system)
