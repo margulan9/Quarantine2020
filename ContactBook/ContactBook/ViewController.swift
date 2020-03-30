@@ -8,7 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+class ViewController: UIViewController, addContact {
+    func add(contact: Contact) {
+        contacts.append(contact)
+        myTableView.reloadData()
+        print("worked")
+    }
+    
    
     private let myArray: NSArray = ["First","Second","Third"]
     private var myTableView: UITableView!
@@ -20,16 +27,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
                 
         self.title = "Contacts"
-        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(logoutUser))
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(transfer))
         self.navigationItem.rightBarButtonItem  = add
         setUpTableView()
         myTableView.register(ContactsTableViewCell.self, forCellReuseIdentifier: "ContactCell")
    
     }
     
-    @objc func logoutUser(){
+    @objc func transfer(){
         let newContactViewController = NewContactViewController()
-        self.navigationController?.pushViewController(newContactViewController, animated: true)
+        self.navigationController?.pushViewController(newContactViewController, animated: false)
     }
 
     func setUpTableView() {
@@ -41,7 +48,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         myTableView.dataSource = self
         myTableView.delegate = self
         self.view.addSubview(myTableView)
+        myTableView.reloadData()
     }
+    
+}
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            contacts.count
     }
@@ -55,9 +66,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-       
- 
-
-
 }
 

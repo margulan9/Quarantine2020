@@ -64,34 +64,30 @@ class ContactsTableViewCell: UITableViewCell {
     }
     
     func setupLayouts() {
-//        let leadingImageViewContainer = UIView()
-//        addSubview(leadingImageViewContainer)
-//        leadingImageViewContainer.translatesAutoresizingMaskIntoConstraints = false
-//        leadingImageViewContainer.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        leadingImageViewContainer.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-//        leadingImageViewContainer.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//        leadingImageViewContainer.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3).isActive = true
-//
-//        leadingImageViewContainer.addSubview(contactImageView)
-//        contactImageView.centerYAnchor.constraint(equalTo: leadingImageViewContainer.centerYAnchor).isActive = true
-//        contactImageView.centerXAnchor.constraint(equalTo: leadingImageViewContainer.centerXAnchor).isActive = true
-//        contactImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7).isActive = true
-//
-//        addSubview(nameLabel)
-//        nameLabel.leadingAnchor.constraint(equalTo: leadingImageViewContainer.trailingAnchor, constant: 0).isActive = true
-//        nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
-//        nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
-//        nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50).isActive = true
+        let leadingImageViewContainer = UIView()
+        addSubview(leadingImageViewContainer)
+        leadingImageViewContainer.translatesAutoresizingMaskIntoConstraints = false
+        leadingImageViewContainer.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        leadingImageViewContainer.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        leadingImageViewContainer.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        leadingImageViewContainer.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3).isActive = true
+
+        leadingImageViewContainer.addSubview(contactImageView)
+        contactImageView.centerYAnchor.constraint(equalTo: leadingImageViewContainer.centerYAnchor).isActive = true
+        contactImageView.centerXAnchor.constraint(equalTo: leadingImageViewContainer.centerXAnchor).isActive = true
+        contactImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7).isActive = true
+
+        addSubview(nameLabel)
+        nameLabel.leadingAnchor.constraint(equalTo: leadingImageViewContainer.trailingAnchor, constant: 0).isActive = true
+        nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50).isActive = true
         
-//        addSubview(numberLabel)
-//        numberLabel.leadingAnchor.constraint(equalTo: leadingImageViewContainer.trailingAnchor, constant: 0).isActive = true
-//        numberLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
-//        numberLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
-//
-//        addSubview(contactImageView)
-//        contactImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
-//        contactImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -40).isActive = true
-//       
+        addSubview(numberLabel)
+        numberLabel.leadingAnchor.constraint(equalTo: leadingImageViewContainer.trailingAnchor, constant: 0).isActive = true
+        numberLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
+        numberLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
+      
     }
 
 }
