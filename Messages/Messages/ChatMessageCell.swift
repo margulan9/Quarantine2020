@@ -45,16 +45,16 @@ class ChatMessageCell: UITableViewCell {
         messageLabel.numberOfLines = 0
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 32).isActive = true
+        messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
         leadingConstraint = messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32)
         trailingConstraint = messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32)
         messageLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
-        messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
+        messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24).isActive = true
         
-        bubbleBackgroundView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -16).isActive = true
-        bubbleBackgroundView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -16).isActive = true
-        bubbleBackgroundView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 16).isActive = true
-        bubbleBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16).isActive = true
+        bubbleBackgroundView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -12).isActive = true
+        bubbleBackgroundView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -12).isActive = true
+        bubbleBackgroundView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 12).isActive = true
+        bubbleBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 12).isActive = true
     }
     
     required init?(coder: NSCoder) {
