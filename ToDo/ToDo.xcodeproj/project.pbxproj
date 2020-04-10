@@ -17,6 +17,7 @@
 		2B6E343B243D9FB400E79B1D /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E343A243D9FB400E79B1D /* CategoriesViewController.swift */; };
 		2B6E343D243DA8B900E79B1D /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E343C243DA8B900E79B1D /* CheckBox.swift */; };
 		2B6E343F243E28D200E79B1D /* ToDos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E343E243E28D200E79B1D /* ToDos.swift */; };
+		2BF516412440C4A1001A5604 /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF516402440C4A1001A5604 /* CategoriesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		2B6E343A243D9FB400E79B1D /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		2B6E343C243DA8B900E79B1D /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		2B6E343E243E28D200E79B1D /* ToDos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDos.swift; sourceTree = "<group>"; };
+		2BF516402440C4A1001A5604 /* CategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				2B6E3426243D8B6500E79B1D /* ViewController.swift */,
 				2B6E3436243D8F1800E79B1D /* ToDoCell.swift */,
 				2B6E343A243D9FB400E79B1D /* CategoriesViewController.swift */,
+				2BF516402440C4A1001A5604 /* CategoriesCell.swift */,
 				2B6E342B243D8B6700E79B1D /* Assets.xcassets */,
 				2B6E342D243D8B6700E79B1D /* LaunchScreen.storyboard */,
 				2B6E3430243D8B6700E79B1D /* Info.plist */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BF516412440C4A1001A5604 /* CategoriesCell.swift in Sources */,
 				2B6E3427243D8B6500E79B1D /* ViewController.swift in Sources */,
 				2B6E3423243D8B6500E79B1D /* AppDelegate.swift in Sources */,
 				2B6E343B243D9FB400E79B1D /* CategoriesViewController.swift in Sources */,
