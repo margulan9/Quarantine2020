@@ -63,7 +63,6 @@ class ViewController: UIViewController {
     
     @objc func transfer(){
         let categoriesVC = CategoriesViewController()
-        categoriesVC.title = "Categories"
         self.navigationController?.pushViewController(categoriesVC, animated: true)
     }
     
@@ -116,26 +115,37 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UITextFiel
     
     @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         
+        let vc = CategoriesViewController()
+        
         let alert = UIAlertController(title: "Delete To Do", message: "Are you sure you want do delete this todo?", preferredStyle: .alert)
-        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
-            let touchPoint = longPressGestureRecognizer.location(in: tableView)
-            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                let ok = UIAlertAction(title: "Yes", style: .default, handler: { action in
-                    self.toDos.remove(at: indexPath.row)
-                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                    self.tableView.reloadData()
-                })
-                alert.addAction(ok)
-                let cancel = UIAlertAction(title: "No", style: .default, handler: { action in
-                     })
-                alert.addAction(cancel)
-                DispatchQueue.main.async(execute: {
-                    self.present(alert, animated: true)
-                })
-           }
-        }
+            if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+                   let touchPoint = longPressGestureRecognizer.location(in: tableView)
+                   if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                       alert.addTextField { (textField) in
+                           textField.placeholder = "Enter category name"
+                       }
+                       let ok = UIAlertAction(title: "Yes", style: .default, handler: { action in
+                           let categoryTextField = alert.textFields![0] as UITextField
+                        let listIndexPath = self.toDos[indexPath.row]
+                        vc.toDoFromMainPage.append(Category(category: categoryTextField.text!, todo: listIndexPath.toDo, isChecked: listIndexPath.isChecked))
+                        self.navigationController?.pushViewController(vc, animated: true)
+                       })
+                       alert.addAction(ok)
+                       let cancel = UIAlertAction(title: "No", style: .default, handler: { action in
+                            })
+                       alert.addAction(cancel)
+                       DispatchQueue.main.async(execute: {
+                           self.present(alert, animated: true)
+                       })
+                  }
+               }
+
     }
     
+//    self.toDos.remove(at: indexPath.row)
+//                       self.tableView.deleteRows(at: [indexPath], with: .automatic)
+//                       self.tableView.reloadData()
+   
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             self.toDos.remove(at: indexPath.row)

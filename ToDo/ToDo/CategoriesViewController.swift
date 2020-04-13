@@ -39,70 +39,50 @@ class CategoryLabel: UILabel {
 
 
 class CategoriesViewController: UIViewController {
-
-    let sortButton:CustomButton = {
-        let button = CustomButton(type: .system)
-        let image = UIImage(named: "down-arrow")
-        let resizedImg = image!.resized(to: CGSize(width: 12, height: 12))
-        button.setImage(resizedImg, for: .normal)
-        button.setTitle("sort ", for: .normal)
-        button.tintColor = .black
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-        button.addTarget(self, action: #selector(sortPressed), for: .touchUpInside)
-        return button
-    }()
-    
-    let sortView:UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
-        view.isHidden = true
-        return view
-    }()
-    
+   
     let tableView = UITableView()
+    var toDoFromMainPage = [Category]()
     var toDoCategories = [[Category]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = "Categories"
         view.backgroundColor = .white
         
-        toDoCategories = [
-            [Category(category: "routine", todo: "To finish to do App", isChecked: false),
-             Category(category: "routine", todo: "To finish to do App also finish sort part and add other useful features", isChecked: false),
-            Category(category: "routine", todo: "To finish to do App", isChecked: false),
-            Category(category: "routine", todo: "To finish to do App", isChecked: false)],
-            [Category(category: "sport", todo: "To finish to do App", isChecked: false)],
-            [Category(category: "iOS", todo: "To finish to do App", isChecked: false)],
-            [Category(category: "edu", todo: "To finish to do App", isChecked: false),
-            Category(category: "edu", todo: "To finish to do App", isChecked: false)],
-            [Category(category: "health", todo: "To finish to do App", isChecked: false),
-            Category(category: "health", todo: "To finish to do App", isChecked: false)]
-        ]
-        
+
+        print(toDoFromMainPage)
+        attemptToAssembleGroupedMessage()
         setUpLayouts()
     }
     
+    func attemptToAssembleGroupedMessage() {
+    
+           let groupedMessages = Dictionary(grouping: toDoFromMainPage) { (element) -> String in
+            return element.category
+           }
+           
+           let sortedKeys = groupedMessages.keys.sorted()
+           sortedKeys.forEach { (key) in
+               let values = groupedMessages[key]
+               toDoCategories.append(values ?? [])
+           }
+               
+           
+       }
+    
     func setUpLayouts() {
-        view.addSubview(sortButton)
-        sortButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        sortButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 22).isActive = true
+       
         
         view.addSubview(tableView)
-        tableView.topAnchor.constraint(equalTo: sortButton.bottomAnchor, constant: 8).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
+        tableView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
         tableView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
         
         setUpTableView()
         
-        view.addSubview(sortView)
-        sortView.topAnchor.constraint(equalTo: sortButton.bottomAnchor, constant: 8).isActive = true
-        sortView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        sortView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        sortView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
+        
     }
     
     func setUpTableView() {
@@ -113,11 +93,6 @@ class CategoriesViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
     }
-    
-    @objc func sortPressed() {
-        sortView.isHidden = false
-    }
-    
 }
 
 extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
