@@ -1,0 +1,6 @@
+framework module Pods_SnapKitSiimpleView {
+  umbrella header "Pods-SnapKitSiimpleView-umbrella.h"
+
+  export *
+  module * { export * }
+}
