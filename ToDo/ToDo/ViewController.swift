@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import RealmSwift
+
+class ToDo: Object {
+    @objc dynamic var toDo = ""
+    @objc dynamic var isCheked = false
+}
 
 class ViewController: UIViewController {
     
-    var toDos = [Todos]()
+    let realm = try! Realm()
+    var toDos:Results<ToDo>!
 
     let addNewTodoView:UIView = {
         let view = UIView()
@@ -38,14 +45,16 @@ class ViewController: UIViewController {
         addNavBar()
         setupLayouts()
         
+        toDos = realm.objects(ToDo.self)
+        
         view.backgroundColor = .white
         
-        toDos = [
-            Todos(toDo: "To finish to do App", isChecked: false),
-            Todos(toDo: "To prepare to flat", isChecked: true),
-            Todos(toDo: "To read a book", isChecked: true),
-            Todos(toDo: "To meditate and write all stuff that occured in your mind brooh", isChecked: false)
-        ]
+//        toDos = [
+//            Todos(toDo: "To finish to do App", isChecked: false),
+//            Todos(toDo: "To prepare to flat", isChecked: true),
+//            Todos(toDo: "To read a book", isChecked: true),
+//            Todos(toDo: "To meditate and write all stuff that occured in your mind brooh", isChecked: false)
+//        ]
         
         newToDoTextField.delegate = self
         
@@ -103,7 +112,10 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toDos.count
+        if toDos.count != 0 {
+            return toDos.count
+        }
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -114,49 +126,56 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UITextFiel
     }
     
     @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        
-        let vc = CategoriesViewController()
-        
-        let alert = UIAlertController(title: "Delete To Do", message: "Are you sure you want do delete this todo?", preferredStyle: .alert)
-            if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
-                   let touchPoint = longPressGestureRecognizer.location(in: tableView)
-                   if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                       alert.addTextField { (textField) in
-                           textField.placeholder = "Enter category name"
-                       }
-                       let ok = UIAlertAction(title: "Yes", style: .default, handler: { action in
-                           let categoryTextField = alert.textFields![0] as UITextField
-                        let listIndexPath = self.toDos[indexPath.row]
-                        vc.toDoFromMainPage.append(Category(category: categoryTextField.text!, todo: listIndexPath.toDo, isChecked: listIndexPath.isChecked))
-                        self.navigationController?.pushViewController(vc, animated: true)
-                       })
-                       alert.addAction(ok)
-                       let cancel = UIAlertAction(title: "No", style: .default, handler: { action in
-                            })
-                       alert.addAction(cancel)
-                       DispatchQueue.main.async(execute: {
-                           self.present(alert, animated: true)
-                       })
-                  }
-               }
+//
+//        let vc = CategoriesViewController()
+//
+//        let alert = UIAlertController(title: "Delete To Do", message: "Are you sure you want do delete this todo?", preferredStyle: .alert)
+//            if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+//                   let touchPoint = longPressGestureRecognizer.location(in: tableView)
+//                   if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+//                       alert.addTextField { (textField) in
+//                           textField.placeholder = "Enter category name"
+//                       }
+//                       let ok = UIAlertAction(title: "Yes", style: .default, handler: { action in
+//                           let categoryTextField = alert.textFields![0] as UITextField
+//                        let listIndexPath = self.toDos[indexPath.row]
+//                        vc.toDoFromMainPage.append(Category(category: categoryTextField.text!, todo: listIndexPath.toDo, isChecked: listIndexPath.isChecked))
+//                        self.navigationController?.pushViewController(vc, animated: true)
+//                       })
+//                       alert.addAction(ok)
+//                       let cancel = UIAlertAction(title: "No", style: .default, handler: { action in
+//                            })
+//                       alert.addAction(cancel)
+//                       DispatchQueue.main.async(execute: {
+//                           self.present(alert, animated: true)
+//                       })
+//                  }
+//               }
 
     }
     
-//    self.toDos.remove(at: indexPath.row)
-//                       self.tableView.deleteRows(at: [indexPath], with: .automatic)
-//                       self.tableView.reloadData()
    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let editingRow = toDos[indexPath.row]
         if editingStyle == .delete {
-            self.toDos.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-      }
+            try! self.realm.write {
+                self.realm.delete(editingRow)
+                tableView.reloadData()
+            }
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == newToDoTextField {
             textField.resignFirstResponder()
-            toDos.append(Todos(toDo: textField.text!, isChecked: false))
+            
+            let newTask = ToDo(value: [textField.text!, false])
+            
+            try! realm.write {
+                realm.add(newTask)
+            }
+            
+            //toDos.append(Todos(toDo: textField.text!, isChecked: false))
             tableView.reloadData()
             textField.text = ""
             return false
